@@ -1,4 +1,5 @@
 <?php
+
 require_once '../../common.php';
 
 require SYSTEM . 'functions.php';
@@ -6,30 +7,38 @@ require BASE . 'install/includes/functions.php';
 require BASE . 'install/includes/locale.php';
 
 ini_set('max_execution_time', 300);
+
 ob_implicit_flush();
 ob_end_flush();
 header('X-Accel-Buffering: no');
 
-if(isset($config['installed']) && $config['installed'] && !isset($_SESSION['saved'])) {
-	warning($locale['already_installed']);
-	return;
+if (isset($config['installed']) && $config['installed'] && !isset($_SESSION['saved'])) {
+    warning($locale['already_installed']);
+    return;
 }
 
 require SYSTEM . 'init.php';
 
 $deleted = 'deleted';
-if($db->hasColumn('players', 'deletion'))
-	$deleted = 'deletion';
+if ($db->hasColumn('players', 'deletion')) {
+    $deleted = 'deletion';
+}
 
 $time = time();
-function insert_sample_if_not_exist($p) {
-	global $db, $success, $deleted, $time;
-
-	$query = $db->query('SELECT `id` FROM `players` WHERE `name` = ' . $db->quote($p['name']));
-	if($query->rowCount() == 0) {
-		if(!query("INSERT INTO `players` (`id`, `name`, `group_id`, `account_id`, `level`, `vocation`, `health`, `healthmax`, `experience`, `lookbody`, `lookfeet`, `lookhead`, `looklegs`, `looktype`, `maglevel`, `mana`, `manamax`, `manaspent`, `soul`, `town_id`, `posx`, `posy`, `posz`, `conditions`, `cap`, `sex`, `lastlogin`, `lastip`, `save`, `lastlogout`, `balance`, `$deleted`, `created`, `hidden`, `comment`) VALUES (null, " . $db->quote($p['name']) . ", 1, " . getSession('account') . ", " . $p['level'] . ", " . $p['vocation_id'] . ", " . $p['health'] . ", " . $p['healthmax'] . ", " . $p['experience'] . ", 118, 114, 38, 57, " . $p['looktype'] . ", 0, " . $p['mana'] . ", " . $p['manamax'] . ", 0, " . $p['soul'] . ", 1, 1000, 1000, 7, '', " . $p['cap'] . ", 1, " . $time . ", 2130706433, 1, " . $time . ", 0, 0, " . $time . ", 1, '');"))
-			$success = false;
-	}
+function insert_sample_if_not_exist($p)
+{
+    global $db, $success, $deleted, $time;
+    
+    $query = $db->query('SELECT `id` FROM `players` WHERE `name` = ' . $db->quote($p['name']));
+    if ($query->rowCount() == 0) {
+        if (!query(
+            "INSERT INTO `players` (`id`, `name`, `group_id`, `account_id`, `level`, `vocation`, `health`, `healthmax`, `experience`, `lookbody`, `lookfeet`, `lookhead`, `looklegs`, `looktype`, `maglevel`, `mana`, `manamax`, `manaspent`, `soul`, `town_id`, `posx`, `posy`, `posz`, `conditions`, `cap`, `sex`, `lastlogin`, `lastip`, `save`, `lastlogout`, `balance`, `$deleted`, `created`, `hidden`, `comment`) VALUES (null, " . $db->quote($p['name']) . ", 1, " . getSession(
+                'account'
+            ) . ", " . $p['level'] . ", " . $p['vocation_id'] . ", " . $p['health'] . ", " . $p['healthmax'] . ", " . $p['experience'] . ", 118, 114, 38, 57, " . $p['looktype'] . ", 0, " . $p['mana'] . ", " . $p['manamax'] . ", 0, " . $p['soul'] . ", 1, 1000, 1000, 7, '', " . $p['cap'] . ", 1, " . $time . ", 2130706433, 1, " . $time . ", 0, 0, " . $time . ", 1, '');"
+        )) {
+            $success = false;
+        }
+    }
 }
 
 $success = true;
@@ -39,51 +48,25 @@ insert_sample_if_not_exist(array('name' => 'Druid Sample', 'level' => 8, 'vocati
 insert_sample_if_not_exist(array('name' => 'Paladin Sample', 'level' => 8, 'vocation_id' => 3, 'health' => 185, 'healthmax' => 185, 'experience' => 4200, 'looktype' => 129, 'mana' => 90, 'manamax' => 90, 'soul' => 100, 'cap' => 470));
 insert_sample_if_not_exist(array('name' => 'Knight Sample', 'level' => 8, 'vocation_id' => 4, 'health' => 185, 'healthmax' => 185, 'experience' => 4200, 'looktype' => 131, 'mana' => 90, 'manamax' => 90, 'soul' => 100, 'cap' => 470));
 
-if($success) {
-	success($locale['step_database_imported_players']);
+if ($success) {
+    success($locale['step_database_imported_players']);
 }
 
 require LIBS . 'items.php';
-if(Items::loadFromXML())
-	success($locale['step_database_loaded_items']);
-else
-	error(Items::getError());
-
-require LIBS . 'weapons.php';
-if(Weapons::loadFromXML())
-	success($locale['step_database_loaded_weapons']);
-else
-	error(Weapons::getError());
-
-require LIBS . 'creatures.php';
-if(Creatures::loadFromXML()) {
-	success($locale['step_database_loaded_monsters']);
-
-	if(Creatures::getMonstersList()->hasErrors()) {
-		$locale['step_database_error_monsters'] = str_replace('$LOG$', 'system/logs/error.log', $locale['step_database_error_monsters']);
-		warning($locale['step_database_error_monsters']);
-	}
-}
-else {
-	error(Creatures::getLastError());
-}
-
-require LIBS . 'spells.php';
-if(Spells::loadFromXML()) {
-	success($locale['step_database_loaded_spells']);
-}
-else {
-	error(Spells::getLastError());
+if (Items::loadFromXML()) {
+    success($locale['step_database_loaded_items']);
+} else {
+    error(Items::getError());
 }
 
 // update config.highscores_ids_hidden
 require_once SYSTEM . 'migrations/20.php';
+
 $database_migration_20 = true;
 $content = '';
-if(!databaseMigration20($content)) {
-	$locale['step_database_error_file'] = str_replace('$FILE$', '<b>' . BASE . 'config.local.php</b>', $locale['step_database_error_file']);
-	warning($locale['step_database_error_file'] . '<br/>
-				<textarea cols="70" rows="10">' . $content . '</textarea>');
+if (!databaseMigration20($content)) {
+    $locale['step_database_error_file'] = str_replace('$FILE$', '<b>' . BASE . 'config.local.php</b>', $locale['step_database_error_file']);
+    warning($locale['step_database_error_file'] . '<br/><textarea cols="70" rows="10">' . $content . '</textarea>');
 }
 
 // add z_polls tables
@@ -93,7 +76,7 @@ require_once SYSTEM . 'migrations/22.php';
 require_once SYSTEM . 'migrations/27.php';
 require_once SYSTEM . 'migrations/30.php';
 
-$locale['step_finish_desc'] = str_replace('$ADMIN_PANEL$', generateLink(str_replace('tools/', '',ADMIN_URL), $locale['step_finish_admin_panel'], true), $locale['step_finish_desc']);
+$locale['step_finish_desc'] = str_replace('$ADMIN_PANEL$', generateLink(str_replace('tools/', '', ADMIN_URL), $locale['step_finish_admin_panel'], true), $locale['step_finish_desc']);
 $locale['step_finish_desc'] = str_replace('$HOMEPAGE$', generateLink(str_replace('tools/', '', BASE_URL), $locale['step_finish_homepage'], true), $locale['step_finish_desc']);
 $locale['step_finish_desc'] = str_replace('$LINK$', generateLink('https://my-aac.org', 'https://my-aac.org', true), $locale['step_finish_desc']);
 
