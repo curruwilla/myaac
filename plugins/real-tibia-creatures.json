@@ -1,0 +1,14 @@
+{
+	"name": "real-tibia-creatures",
+	 "description": "This is a list of creatures like on Tibia.com",
+	"version": "1.0",
+	"author": "slawkens",
+	"contact": "slawkens@gmail.com",
+	"require": {
+		"myaac": "0.3.0"
+	},
+	"uninstall": [
+		"plugins/real-tibia-creatures.json",
+		"system/templates/creatures"
+	]
+ }

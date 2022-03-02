@@ -1,0 +1,77 @@
+<div style="text-align: -webkit-center !important;">
+	<table>
+		<tbody>
+			<tr>
+				<td><img src="{{ template_path }}/images/global/content/headline-bracer-left.gif"></td>
+				<td style="text-align:center;vertical-align:middle;horizontal-align:center;font-size:17px;font-weight:bold;">Our Team</td>
+				<td><img src="{{ template_path }}/images/global/content/headline-bracer-right.gif"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<br><br>
+
+<div class="TableContainer">
+<div class="CaptionContainer">
+	<div class="CaptionInnerContainer">
+		<span class="CaptionEdgeLeftTop" style="background-image:url({{ template_path }}/images/global/content/box-frame-edge.gif);"></span>
+		<span class="CaptionEdgeRightTop" style="background-image:url({{ template_path }}/images/global/content/box-frame-edge.gif);"></span>
+		<span class="CaptionBorderTop" style="background-image:url({{ template_path }}/images/global/content/table-headline-border.gif);"></span>
+		<span class="CaptionBorderBottom" style="background-image:url({{ template_path }}/images/global/content/table-headline-border.gif);"></span>
+		<span class="CaptionEdgeLeftBottom" style="background-image:url({{ template_path }}/images/global/content/box-frame-edge.gif);"></span>
+		<span class="CaptionVerticalLeft" style="background-image:url({{ template_path }}/images/global/content/box-frame-vertical.gif);"></span>
+		<div class="Text" style="min-height: 17px"><div style="float: left">Support in game</div> </div>
+		<span class="CaptionVerticalRight" style="background-image:url({{ template_path }}/images/global/content/box-frame-vertical.gif);"></span>
+		<span class="CaptionBorderBottom" style="background-image:url({{ template_path }}/images/global/content/table-headline-border.gif);"></span>
+		<span class="CaptionEdgeLeftBottom"></span>
+		<span class="CaptionEdgeRightBottom" style="background-image:url({{ template_path }}/images/global/content/box-frame-edge.gif);"></span>
+	</div>
+</div>
+  
+<table class="Table3" cellpadding="0" cellspacing="0" align="">
+	<tbody>
+		<tr>
+			<td>
+				<div class="InnerTableContainer">
+					<table style="width:100%;">
+						<tbody>
+							<tr>
+								<td>
+									<div class="TableContent">
+										<div class="TableContentContainer">
+											<table class="TableContent " width="100%">
+												<tbody>
+												<tr bgcolor="#D4C0A1">
+													{% if config.team_display_outfit %}<td style="width: 64px;"><b>Outfit</b></td>{% endif %}
+													<td width="70%"><b>Name</b></td>
+													<td><b>Group</b></td>
+												</tr>
+												{% for group in groupmember|reverse %}
+												{% if group.members is not empty %}
+												{% for member in group.members|reverse %}
+												{% set i = i + 1 %}
+												<tr bgcolor="{{ getStyle(i) }}" style="height: 64px;">
+													{% if config.team_display_outfit %}
+													<td><img style="position: absolute; margin-top: {% if member.player.looktype in [75, 266, 302] %}-16px;margin-left:-0px;{% else %} -45px; margin-left: -30px;{%  endif %}" src="{{ member.outfit }}" alt="player outfit"/></td>
+													{% endif %}
+													<td>{{ member.link|raw }}</td>
+													<td>{{ group.group_name|capitalize }}</td>
+												</tr>
+												{% endfor %}
+												{% endif %}
+												{% endfor %}
+
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table></div>

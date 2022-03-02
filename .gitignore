@@ -1,0 +1,8 @@
+/.idea
+/system/logs/
+/system/cache/
+/system/php_sessions/
+config.local.php
+config.php
+/vendor/
+composer.lock

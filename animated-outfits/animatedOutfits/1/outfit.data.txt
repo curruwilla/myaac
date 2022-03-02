@@ -1,0 +1,1 @@
+a:2:{s:5:"files";a:2:{i:0;s:29:"animatedOutfits/1/1_1_1_1.png";i:1;s:33:"animatedOutfits/1/outfit.data.txt";}s:12:"framesNumber";i:1;}
