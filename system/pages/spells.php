@@ -17,8 +17,14 @@ if (isset($_POST['reload_spells']) && $canEdit) {
 }
 
 $spellsJson = BASE . "data-json/spells.json";
-$array = json_decode(file_get_contents($spellsJson), true);
-$array = $array['conjuring'] + $array['instant'];
+$getJson = json_decode(file_get_contents($spellsJson), true);
+
+$array = [];
+foreach ($getJson as $tipos) {
+    foreach ($tipos as $data) {
+        $array[] = $data;
+    }
+}
 
 $get = filter_input(INPUT_GET, 'spell');
 

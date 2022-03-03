@@ -24,6 +24,7 @@
  * @copyright 2019 MyAAC
  * @link      https://my-aac.org
  */
+
 require_once 'common.php';
 require_once SYSTEM . 'functions.php';
 
@@ -322,6 +323,7 @@ if (!$db->hasTable('myaac_account_actions')) {
 require_once SYSTEM . 'hooks.php';
 $hooks = new Hooks();
 $hooks->load();
+
 require_once SYSTEM . 'template.php';
 require_once SYSTEM . 'login.php';
 require_once SYSTEM . 'status.php';
@@ -428,9 +430,11 @@ if ($config['backward_support']) {
     if (!isset($config['vdarkborder'])) {
         $config['vdarkborder'] = '#505050';
     }
+    
     if (!isset($config['darkborder'])) {
         $config['darkborder'] = '#D4C0A1';
     }
+    
     if (!isset($config['lightborder'])) {
         $config['lightborder'] = '#F1E0C6';
     }

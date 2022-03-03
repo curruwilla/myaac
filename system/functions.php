@@ -1248,7 +1248,7 @@ function config($key)
         return $config[$key[0]] = $key[1];
     }
 
-    return @$config[$key];
+    return $config[$key] ?? null;
 }
 
 function configLua($key)
@@ -1258,7 +1258,7 @@ function configLua($key)
         return $config['lua'][$key[0]] = $key[1];
     }
 
-    return @$config['lua'][$key];
+    return $config['lua'][$key] ?? null;
 }
 
 function clearCache()

@@ -57,7 +57,7 @@ $config = [
     // footer
     'footer' => ''/*'<br/>Your Server &copy; 2016. All rights reserved.'*/,
     
-    'language' => 'en', // default language (currently only 'en' available)
+    'language' => 'pt-BR', // default language (currently only 'en' available)
     'language_allow_change' => false,
     
     'visitors_counter' => true,
@@ -117,6 +117,7 @@ $config = [
         'plain' => ''/*"--\nMy Server,\nhttp://www.myserver.com"*/,
         'html' => '',/*'<br/>My Server,\n<a href="http://www.myserver.com">myserver.com</a>'*/
     ],
+    
     'smtp_enabled' => false, // send by smtp or mail function (set false if use mail function, set to true if you use GMail or Microsoft Outlook)
     'smtp_host' => '', // mail host. smtp.gmail.com for GMail / smtp-mail.outlook.com for Microsoft Outlook
     'smtp_port' => 25, // 25 (default) / 465 (ssl, GMail) / 587 (tls, Microsoft Outlook)
@@ -132,7 +133,6 @@ $config = [
     'recaptcha_secret_key' => '',
     'recaptcha_theme' => 'light', // light, dark
     
-    //
     'generate_new_reckey' => true,                // let player generate new recovery key, he will receive e-mail with new rec key (not display on page, hacker can't generate rec key)
     'generate_new_reckey_price' => 20,            // price for new recovery key
     'send_mail_when_change_password' => true,    // send e-mail with new password when change password to account
@@ -252,6 +252,7 @@ $config = [
         'frags' => true,
         'deleted' => false, // should deleted characters from same account be still listed on the list of characters? When enabled it will show that character is "[DELETED]"
     ],
+    
     'quests' => [
         'Demon Helmet' => 100,
         'Anihilation' => 101,
@@ -263,6 +264,7 @@ $config = [
         //'Some Quest' => 123,
         //'Some Quest Two' => 456,
     ], // quests list (displayed in character view), name => storage
+    
     'signature_enabled' => false,
     'signature_type' => 'tibian', // signature engine to use: tibian, mango, gesior
     'signature_cache_time' => 5, // how long to store cached file (in minutes), default 5 minutes
@@ -275,17 +277,17 @@ $config = [
     'news_author' => false, // show author of the news
     
     // banner home
-    'banner_status' => true,
+    'banner_status' => false,
     'banner_image' => '500x660.png', // templates->tibiacom->images->carousel
-    'banner_link' => 'www.instagram.com',
+    'banner_link' => 'www.google.com',
     
     // status bar
     'status_bar' => true,
-    'client_link' => 'https://www.lucasgiovanni.com', // link to download tibia client
-    'discord_link' => 'https://www.lucasgiovanni.com', // link to join discord channel
-    'whatsapp_link' => '5511912345678', // wa.me/5511912345678
-    'instagram_link' => 'test', // www.instagram.com/PROFILE
-    'facebook_link' => 'test', // www.facebook.com/PAGE
+    'client_link' => '', // link to download tibia client
+    'discord_link' => '', // link to join discord channel
+    'whatsapp_link' => '', // 5511990000000
+    'instagram_link' => '', // www.instagram.com/PROFILE
+    'facebook_link' => '', // www.facebook.com/PAGE
     'collapse_status' => true,
     
     // events
@@ -347,7 +349,7 @@ $config = [
     'google_analytics_id' => '', // e.g.: UA-XXXXXXX-X
     'experiencetable_columns' => 4, // how many columns to display in experience table page. * experiencetable_rows, 5 = 500 (will show up to 500 level)
     'experiencetable_rows' => 500, // till how many levels in one column
-    'date_timezone' => 'Europe/Berlin', // more info at http://php.net/manual/en/timezones.php
+    'date_timezone' => 'America/Sao_Paulo', // more info at http://php.net/manual/en/timezones.php
     'footer_show_load_time' => true, // display load time of the page in the footer
     
     'npc' => [],
