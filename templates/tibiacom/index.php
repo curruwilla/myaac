@@ -28,16 +28,14 @@ if (isset($config['boxes'])) {
     <script src="admin/bootstrap/js/bootstrap.min.js"></script>
     <link href="admin/bootstrap/bootstrap-lucasg.css" rel="stylesheet" type="text/css">
     
-    <?php
-    if ($config['pace_load'] == true) { ?>
+    <?php if ($config['pace_load'] == true) { ?>
         <script src="admin/bootstrap/pace/pace.js"></script>
         <link href="admin/bootstrap/pace/themes/<?= $config['pace_color'] ?>/pace-theme-<?= $config['pace_theme'] ?>.css" rel="stylesheet"/>
-        <?php
-    } ?>
+    <?php } ?>
     
     <script type="text/javascript">
-        var menus = '';
-        var loginStatus = "<?= ($logged ? 'true' : 'false'); ?>";
+        let menus = '';
+        let loginStatus = "<?= ($logged ? 'true' : 'false'); ?>";
         <?php
         if (PAGE !== 'news') {
             if (strpos(URI, 'subtopic=') !== false) {
@@ -64,9 +62,10 @@ if (isset($config['boxes'])) {
             $tmp = 'news';
         }
         ?>
-        var activeSubmenuItem = "<?= $tmp; ?>";
-        var IMAGES = "<?= $template_path; ?>/images";
-        var LINK_ACCOUNT = "<?= BASE_URL; ?>";
+        
+        let activeSubmenuItem = "<?= $tmp; ?>";
+        let IMAGES = "<?= $template_path; ?>/images";
+        let LINK_ACCOUNT = "<?= BASE_URL; ?>";
         
         function rowOverEffect(object) {
             if (object.className == 'moduleRow') object.className = 'moduleRowOver';
@@ -122,10 +121,10 @@ if (isset($config['boxes'])) {
                 window.location = "<?= getLink('account/logout'); ?>";
             }
         }
-        
-        var menu = [];
+
+        let menu = [];
         menu[0] = {};
-        var unloadhelper = false;
+        let unloadhelper = false;
         
         // load the menu and set the active submenu item by using the variable 'activeSubmenuItem'
         function LoadMenu() {
@@ -134,8 +133,8 @@ if (isset($config['boxes'])) {
             menus = localStorage.getItem('menus');
             if (menus.lastIndexOf("&") === -1) {
                 menus = "news=1&account=0&community=0&library=0&forum=0<?php if ($config['gifts_system']) {
-            echo '&shops=0';
-        } ?>&";
+                    echo '&shops=0';
+                } ?>&";
             }
             FillMenuArray();
             InitializeMenu();
@@ -176,10 +175,9 @@ if (isset($config['boxes'])) {
             }
         }
         
-        
         function SaveMenuArray() {
-            var stringSlices = "";
-            var temp = "";
+            let stringSlices = "";
+            let temp = "";
             
             for (menuItemName in menu[0]) {
                 stringSlices = menuItemName + "=" + menu[0][menuItemName] + "&";
@@ -204,9 +202,7 @@ if (isset($config['boxes'])) {
             document.getElementById(sourceId + "_Extend").style.backgroundImage = "url(" + IMAGES + "global/general/minus.gif)";
             document.getElementById(sourceId + "_Lights").style.visibility = "hidden";
             $('#' + sourceId + '_Submenu').slideDown('slow');
-            //document.getElementById(sourceId+"_Submenu").style.visibility = "visible";
-            //document.getElementById(sourceId+"_Submenu").style.display = "block";
-            //document.getElementById(sourceId+"_Lights").style.visibility = "hidden";
+            
             document.getElementById(sourceId + "_Extend").style.backgroundImage = "url(" + IMAGES + "/general/minus.gif)";
         }
         
@@ -217,9 +213,7 @@ if (isset($config['boxes'])) {
             $('#' + sourceId + '_Submenu').slideUp('fast', function () {
                 document.getElementById(sourceId + "_Submenu").style.visibility = "hidden";
             });
-            //document.getElementById(sourceId+"_Submenu").style.visibility = "hidden";
-            //document.getElementById(sourceId+"_Submenu").style.display = "none";
-            //document.getElementById(sourceId+"_Lights").style.visibility = "visible";
+            
             document.getElementById(sourceId + "_Extend").style.backgroundImage = "url(" + IMAGES + "/general/plus.gif)";
         }
         
@@ -251,8 +245,10 @@ if (isset($config['boxes'])) {
     <?= template_place_holder('head_end'); ?>
 </head>
 <body onBeforeUnLoad="SaveMenu();" onUnload="SaveMenu();">
-<?= template_place_holder('body_start'); ?>
+
 <?php
+template_place_holder('body_start');
+
 if (!empty($config['network_facebook'])) { ?>
     <script type="text/javascript">
         window.fbAsyncInit = function () {
@@ -293,7 +289,7 @@ if (!empty($config['network_facebook'])) { ?>
             });
         };
         (function (d) {
-            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+            let js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
             if (d.getElementById(id)) {
                 return;
             }
@@ -304,8 +300,8 @@ if (!empty($config['network_facebook'])) { ?>
             ref.parentNode.insertBefore(js, ref);
         }(document));
     </script>
-    <?php
-} ?>
+<?php } ?>
+
 <div id="top"></div>
 <div id="ArtworkHelper" style="background-image:url(<?= $template_path; ?>/images/header/<?= $config['background_image']; ?>);">
     <div id="Bodycontainer">
@@ -313,7 +309,6 @@ if (!empty($config['network_facebook'])) { ?>
             <div id="MenuColumn">
                 <div id="LeftArtwork">
                     <img id="TibiaLogoArtworkTop" src="<?= $template_path; ?>/images/header/<?= $config['logo_image']; ?>" onClick="window.location = '<?= getLink('news') ?>';" alt="logoartwork"/>
-                    <img id="LogoLink" src="<?= $template_path; ?>/images/header/tibia-logo-artwork-string.gif" onClick="window.location = 'mailto:<?= $config['mail_address']; ?>';" alt="logoartwork"/>
                 </div>
                 
                 <div id="Loginbox">
@@ -324,13 +319,10 @@ if (!empty($config['network_facebook'])) { ?>
                         <div id="LoginButton" style="background-image:url(<?= $template_path; ?>/images/global/buttons/mediumbutton.gif)">
                             <div onClick="LoginButtonAction();" onMouseOver="MouseOverBigButton(this);" onMouseOut="MouseOutBigButton(this);">
                                 <div class="Button" style="background-image:url(<?= $template_path; ?>/images/global/buttons/mediumbutton-over.gif)"></div>
-                                <?php
-                                echo '<div id="ButtonText" ' . ($logged ? '' : 'style="background-image:url(' . $template_path . '/images/global/buttons/mediumbutton_login.png)"') . '>
-			 </div>';
+                                <?= '<div id="ButtonText" ' . ($logged ? '' : 'style="background-image:url(' . $template_path . '/images/global/buttons/mediumbutton_login.png)"') . '></div>';
                                 ?>
                             </div>
                         </div>
-                    
                     </div>
                     
                     <div style="clear:both"></div>
@@ -367,7 +359,7 @@ if (!empty($config['network_facebook'])) { ?>
                     
                     <?php
                     $menus = get_template_menus();
-
+                    
                     foreach ($config['menu_categories'] as $id => $cat) {
                         if (!isset($menus[$id]) || ($id == MENU_CATEGORY_SHOP && !$config['gifts_system'])) {
                             continue;
@@ -390,9 +382,9 @@ if (!empty($config['network_facebook'])) { ?>
                             <div id='<?= $cat['id']; ?>_Submenu' class='Submenu'>
                                 <?php
                                 $default_menu_color = 'ffffff';
-
-                        foreach ($menus[$id] as $category => $menu) {
-                            $link_color = '#' . (strlen($menu['color']) == 0 ? $default_menu_color : $menu['color']); ?>
+                                
+                                foreach ($menus[$id] as $category => $menu) {
+                                    $link_color = '#' . (strlen($menu['color']) == 0 ? $default_menu_color : $menu['color']); ?>
                                     <a href='<?= $menu['link_full']; ?>'<?= $menu['blank'] ? ' target="_blank"' : '' ?>>
                                         <div id='submenu_<?= str_replace('/', '', $menu['link']); ?>' class='Submenuitem' onMouseOver='MouseOverSubmenuItem(this)' onMouseOut='MouseOutSubmenuItem(this)' style="color: <?= $link_color; ?>;">
                                             <div class='LeftChain' style='background-image:url(<?= $template_path; ?>/images/general/chain.gif);'></div>
@@ -402,7 +394,7 @@ if (!empty($config['network_facebook'])) { ?>
                                         </div>
                                     </a>
                                     <?php
-                        } ?>
+                                } ?>
                             </div>
                             <?php
                             if ($id == MENU_CATEGORY_SHOP || (!$config['gifts_system'] && $id == MENU_CATEGORY_SHOP - 1)) {
@@ -420,9 +412,7 @@ if (!empty($config['network_facebook'])) { ?>
             </div>
             
             <div id="ContentColumn">
-                
                 <div class="Content">
-                    
                     <?php
                     if ($config['status_bar'] == true) { ?>
                         <div class="Box">
@@ -435,62 +425,54 @@ if (!empty($config['network_facebook'])) { ?>
                                     if (isset($config['discord_link']) && !empty($config['discord_link'])) { ?>
                                         <img class="InfoBarBigLogo" src="<?= $template_path; ?>/images/global/header/icon-discord.png">
                                         <span class="InfoBarNumbers">
-					<a class="InfoBarLinks" href="<?= $config['discord_link']; ?>" target="new"><span class="InfoBarSmallElement">Join Discord</span></a>
-				</span>
+                                            <a class="InfoBarLinks" href="<?= $config['discord_link']; ?>" target="new"><span class="InfoBarSmallElement">Join Discord</span></a>
+                                        </span>
                                         <?php
                                     } ?>
                                     <?php
                                     if (isset($config['whatsapp_link']) && !empty($config['whatsapp_link'])) { ?>
                                         <img class="InfoBarBigLogo" src="<?= $template_path; ?>/images/global/header/icon-whatsapp.png" width="16">
                                         <span class="InfoBarNumbers">
-					<a class="InfoBarLinks" href="https://wa.me/<?= $config['whatsapp_link']; ?>" target="new"><span class="InfoBarSmallElement">Whatsapp</span></a>
-				</span>
+                                            <a class="InfoBarLinks" href="https://wa.me/<?= $config['whatsapp_link']; ?>" target="new"><span class="InfoBarSmallElement">Whatsapp</span></a>
+                                        </span>
                                         <?php
                                     } ?>
                                     <?php
                                     if (isset($config['instagram_link']) && !empty($config['instagram_link'])) { ?>
                                         <img class="InfoBarBigLogo" src="<?= $template_path; ?>/images/global/header/icon-instagram.png" width="16">
                                         <span class="InfoBarNumbers">
-					<a class="InfoBarLinks" href="https://www.instagram.com/<?= $config['instagram_link']; ?>" target="new"><span class="InfoBarSmallElement">Instagram</span></a>
-				</span>
+                                            <a class="InfoBarLinks" href="https://www.instagram.com/<?= $config['instagram_link']; ?>" target="new"><span class="InfoBarSmallElement">Instagram</span></a>
+                                        </span>
                                         <?php
                                     } ?>
                                     <?php
                                     if (isset($config['facebook_link']) && !empty($config['facebook_link'])) { ?>
                                         <img class="InfoBarBigLogo" src="<?= $template_path; ?>/images/global/header/icon-facebook.png" width="16">
                                         <span class="InfoBarNumbers">
-					<a class="InfoBarLinks" href="https://www.facebook.com/<?= $config['facebook_link']; ?>" target="new"><span class="InfoBarSmallElement">Facebook</span></a>
-				</span>
+                                            <a class="InfoBarLinks" href="https://www.facebook.com/<?= $config['facebook_link']; ?>" target="new"><span class="InfoBarSmallElement">Facebook</span></a>
+                                        </span>
                                         <?php
                                     } ?>
                                     <img class="InfoBarBigLogo" src="<?= $template_path; ?>/images/global/header/icon-download.png">
-                                    <span class="InfoBarNumbers">
-					<a class="InfoBarLinks" href="?subtopic=downloadclient"><span class="InfoBarSmallElement">Download</span></a>
-				</span>
+                                        <span class="InfoBarNumbers">
+                                        <a class="InfoBarLinks" href="?subtopic=downloadclient"><span class="InfoBarSmallElement">Download</span></a>
+                                    </span>
+                                    
                                     <span style="float: right; margin-top: -2px;">
-				<img class="InfoBarBigLogo" src="<?= $template_path; ?>/images/global/header/icon-players-online.png">
-				<span class="InfoBarNumbers">
-					<span class="InfoBarSmallElement">
-						<a class="InfoBarLinks" href="?online">
-<?php
-if ($status['online']) {
-                                        echo '' . $status['players'] . ' Players Online';
-                                    } else {
-                                        echo 'Server Offline';
-                                    }
-?>
-						</a>
-					</span>
-				</span>
-    <?php
-    if ($config['collapse_status'] == true) { ?>
-        <a data-bs-toggle="collapse" href="#statusbar" role="button" aria-expanded="false" aria-controls="statusbar">
-            <img src="<?= $template_path; ?>/images/global/content/top-to-back.gif" class="InfoBarBigLogo">
-        </a>
-    <?php
-    } ?>
-</span>
-                                
+                                        <img alt="Players online" class="InfoBarBigLogo" src="<?= $template_path; ?>/images/global/header/icon-players-online.png">
+                                        <span class="InfoBarNumbers">
+                                            <span class="InfoBarSmallElement">
+                                                <a class="InfoBarLinks" href="?online"><?= $status['online'] ? $status['players'] . ' Players Online' : 'Server Offline' ?></a>
+                                            </span>
+                                        </span>
+                                        <?php
+                                        if ($config['collapse_status'] == true) { ?>
+                                            <a data-bs-toggle="collapse" href="#statusbar" role="button" aria-expanded="false" aria-controls="statusbar">
+                                                <img src="<?= $template_path; ?>/images/global/content/top-to-back.gif" class="InfoBarBigLogo">
+                                            </a>
+                                            <?php
+                                        } ?>
+                                    </span>
                                 </div>
                             </div>
                             <!-- COLLAPSE STATUS BAR -->
@@ -616,7 +598,7 @@ if ($status['online']) {
             <div id="ThemeboxesColumn">
                 <?php
                 $monsterquery = $SQL->query('SELECT `boostname`, `looktype`, `lookfeet` , `looklegs` , `lookhead` , `lookbody` , `lookaddons` , `lookmount`   FROM `boosted_creature`')->fetch();
-
+                
                 $monstername = $monsterquery['boostname'];
                 $monstertype = $monsterquery['looktype'];
                 $monsterfeet = $monsterquery['lookfeet'];
@@ -634,14 +616,14 @@ if ($status['online']) {
                 <div id="Themeboxes">
                     <?php
                     $twig_loader->prependPath(__DIR__ . '/boxes/templates');
-
+                    
                     foreach ($config['boxes'] as $box) {
                         $file = TEMPLATES . $template_name . '/boxes/' . $box . '.php';
                         if (file_exists($file)) {
                             include($file);
                         }
                     }
-
+                    
                     if ($config['template_allow_change']) {
                         echo '<span style="color: white">Template:</span><br/>' . template_form();
                     }
