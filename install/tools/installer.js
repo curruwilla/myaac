@@ -14,7 +14,7 @@ function performInstall(url) {
                 var progressResponse;
                 var response = e.currentTarget.response;
                 progressResponse = response;
-				
+
                 if (lastResponseLength === false) {
                     progressResponse = response;
                     lastResponseLength = response.length;
