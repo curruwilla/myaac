@@ -179,14 +179,14 @@ if (!$news_cached) {
             
             $admin_options = '';
             if ($canEdit) {
-                $admin_options = '<br/><br/><a target="_blank" rel="noopener noreferrer" href="/admin/?p=news&action=edit&id=' . $news['id'] . '" title="Edit">
-					<img src="images/edit.png"/>Edit
+                $admin_options = '<br/><br/><a target="_blank" rel="noopener noreferrer" href="' . BASE_URL . 'admin/?p=news&action=edit&id=' . $news['id'] . '" title="Edit">
+					<img alt="edit" src="images/edit.png"/>Edit
 				</a>
-				<a id="delete" target="_blank" rel="noopener noreferrer" href="/admin/?p=news&action=delete&id=' . $news['id'] . '" onclick="return confirm(\'Are you sure?\');" title="Delete">
-					<img src="images/del.png"/>Delete
+				<a id="delete" target="_blank" rel="noopener noreferrer" href="' . BASE_URL . 'admin/?p=news&action=delete&id=' . $news['id'] . '" onclick="return confirm(\'Are you sure?\');" title="Delete">
+					<img alt="delete" src="images/del.png"/>Delete
 				</a>
-				<a target="_blank" rel="noopener noreferrer" href="/admin/?p=news&action=hide&id=' . $news['id'] . '" title="' . ($news['hidden'] != 1 ? 'Hide' : 'Show') . '">
-					<img src="images/' . ($news['hidden'] != 1 ? 'success' : 'error') . '.png"/>
+				<a target="_blank" rel="noopener noreferrer" href="' . BASE_URL . 'admin/?p=news&action=hide&id=' . $news['id'] . '" title="' . ($news['hidden'] != 1 ? 'Hide' : 'Show') . '">
+					<img alt="hide" src="images/' . ($news['hidden'] != 1 ? 'success' : 'error') . '.png"/>
 					' . ($news['hidden'] != 1 ? 'Hide' : 'Show') . '
 				</a>';
             }

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Project: MyAAC
  * Automatic Account Creator for Open Tibia Servers
@@ -72,7 +71,6 @@ if (config('env') === 'dev') {
 
 if ((!isset($config['installed']) || !$config['installed']) && file_exists(BASE . 'install')) {
     header('Location: ' . BASE_URL . 'install/');
-    
     throw new RuntimeException('Setup detected that <b>install/</b> directory exists. Please visit <a href="' . BASE_URL . 'install">this</a> url to start MyAAC Installation.<br/>Delete <b>install/</b> directory if you already installed MyAAC.<br/>Remember to REFRESH this page when you\'re done!');
 }
 

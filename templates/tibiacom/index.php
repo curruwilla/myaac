@@ -707,8 +707,6 @@ if ($status['online']) {
     });
 </script>
 
-<div class="scrollToTop" style="background: url(<?= $template_path; ?>/images/global/content/top.png) no-repeat 0 0;"></div>
-
 <script src="<?= $template_path; ?>/js/generic.js"></script>
 <div id="HelperDivContainer" style="background-image: url(<?= $template_path; ?>/images/global/content/scroll.gif);">
     <div class="HelperDivArrow" style="background-image: url(<?= $template_path; ?>/images/global/content/helper-div-arrow.png);"></div>
