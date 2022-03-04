@@ -1,6 +1,6 @@
 body {
-  margin: 0px;
-  padding:  0px;
+  margin: 0;
+  padding:  0;
   background-color: #051122;
 }
 
@@ -91,12 +91,9 @@ img {
   max-width: 1280px;
   width: 100%;
   height: 100%;
-  margin: 0px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0px;
+  margin: 0 auto;
+  padding: 0;
   display: table;
-  width: expression(document.body.clientWidth > 1200? "1200px": "100%" );
 }
 #LoginCreateAccountBox p {
     margin: 0;
@@ -121,12 +118,12 @@ img {
 
 #MenuColumn {
   position: absolute;
-  left: 0px;
-  top: 0px;
+  left: 0;
+  top: 0;
   width: 180px;
   margin-right: 15px;
   margin-left: 15px;
-  padding: 0px;
+  padding: 0;
   font-family:  Arial, sans-serif;
   font-size: 10pt;
   font-weight: bold;
@@ -135,7 +132,7 @@ img {
 
 #ContentColumn {
   position: relative;
-  margin: 0px;
+  margin: 0;
   margin-left: 205px;
   margin-right: 205px;
 }
@@ -143,10 +140,10 @@ img {
 #ThemeboxesColumn {
   text-align:  center;
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 0;
+  right: 0;
   width: 180px;
-  margin: 0px;
+  margin: 0;
   margin-right: 15px;
   margin-left: 25px;
 }
@@ -197,13 +194,13 @@ img {
   width: 196px;
   z-index: 5;
   cursor: pointer;
-  border: 0px;
+  border: 0;
 }
 
 #LeftArtwork #TibiaLogoArtworkBottom {
   position: absolute;
   top: 102px;
-  left: 0px;
+  left: 0;
   height: 43px;
   width: 166px;
   z-index: 5;
@@ -211,7 +208,7 @@ img {
 
 #LeftArtwork #Statue_1{
   position: absolute;
-  top: 0px;
+  top: 0;
   left: 5px;
   height: 30px;
   width: 32px;
@@ -220,7 +217,7 @@ img {
 
 #LeftArtwork #Statue_2 {
   position: absolute;
-  top: 0px;
+  top: 0;
   right: 25px;
   height: 30px;
   width: 32px;
@@ -385,7 +382,7 @@ img {
 
 #Loginbox .LoginBorder {
   position: absolute;
-  top: 0px;
+  top: 0;
   height: 52px;
   width: 8px;
   background-repeat: repeat-y;
@@ -398,7 +395,7 @@ img {
 
 #Loginbox .Loginstatus {
   position: relative;
-  top: 0px;
+  top: 0;
   left: 5px;
   height: 13px;
   width: 160px;
@@ -435,7 +432,7 @@ img {
 
 #Loginbox #LoginButton {
   position: relative;
-  top: 0px;
+  top: 1px;
   left: 5px;
   height: 37px;
   width: 150px;
@@ -443,8 +440,8 @@ img {
 
 #Loginbox #LoginButton .Button {
   position: relative;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   width: 150px;
   height: 37px;
   visibility: hidden;
@@ -452,8 +449,8 @@ img {
 
 #Loginbox #LoginButton #ButtonText {
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   height: 37px;
   width: 150px;
   z-index: 15;
@@ -484,7 +481,7 @@ img {
 #MenuBottom {
   position: relative;
   left: -5px;
-  bottom: 0px;
+  bottom: 0;
   height: 12px;
   width: 180px;
   background-repeat: no-repeat;
@@ -551,7 +548,7 @@ img {
   position: absolute;
   height: 32px;
   width: 32px;
-  top: 0px;
+  top: 0;
   left: 8px;
 }
 
@@ -567,8 +564,8 @@ img {
 
 .LeftChain {
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   height: 33px;
   width: 7px;
   background-repeat: repeat-y;
@@ -576,8 +573,8 @@ img {
 
 .RightChain {
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 0;
+  right: 0;
   height: 33px;
   width: 7px;
   background-repeat: repeat-y;
@@ -585,16 +582,16 @@ img {
 
 .Submenu {
   position: relative;
-  margin-left: 0px;
+  margin-left: 0;
   margin-right: 5px;
   background-color: #0D2E2B;
-  width: 170px;
+  width: 169px;
 }
 
 .Submenuitem {
   position: relative;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 .ActiveSubmenuItemIcon {
@@ -608,11 +605,11 @@ img {
 }
 
 .SubmenuitemLabel {
-  margin: 0px;
+  margin: 0;
   border-top: 0;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding-left: 22px;
+  padding-left: 20px;
   border-bottom: 1px solid #4b7874;
   overflow: hidden;
 }
@@ -641,7 +638,7 @@ img {
 
 .Content {
   position: relative;
-  top: 0px;
+  top: 0;
   width: 100%;
 }
 
@@ -650,7 +647,7 @@ img {
   position: relative;
   top: 796px;
   margin: 20px;
-  border: 0px dashed #051122;
+  border: 0 dashed #051122;
   border-right-width: 550px;
 }
 
@@ -687,7 +684,7 @@ img {
 }
 
 .Content .Box {
-  font-size: 0pt;
+  font-size: 0;
   position: relative;
   margin: 5px;
   margin-bottom: 18px;
@@ -823,7 +820,7 @@ img {
 
 .Content .Border_2 {
   margin: 4px;
-  padding: 0px;
+  padding: 0;
   background-color: #793d03;
 }
 
@@ -861,8 +858,8 @@ img {
 }
 #Themeboxes .Bottom {
   position: absolute;
-  bottom: 0px;
-  left: 0px;
+  bottom: 0;
+  left: 0;
   height: 12px;
   width: 180px;
 }
@@ -932,7 +929,7 @@ img {
   height: 111px;
   width: 170px;
   top: 31px;
-  left: 0px;
+  left: 0;
   margin-left: 5px;
   margin-right: 5px;
   border: 0;
@@ -1178,16 +1175,16 @@ img {
 }
 .SmallBox .BoxFrameVerticalRight {
   position: absolute;
-  right: 0px;
-  top: 0px;
+  right: 0;
+  top: 0;
   width: 3px;
   background-repeat: repeat-y;
   height: 100%;
 }
 .SmallBox .BoxFrameVerticalLeft {
   position: absolute;
-  left: 0px;
-  top: 0px;
+  left: 0;
+  top: 0;
   width: 3px;
   background-repeat: repeat-y;
   height: 100%;
@@ -1261,8 +1258,8 @@ img {
 }
 #ProgressBar #BackgroundContainerCenter {
   position: absolute;
-  left: 0px;
-  top: 0px;
+  left: 0;
+  top: 0;
   height: 17px;
   width: 100%;
 }
@@ -1274,8 +1271,8 @@ img {
 }
 #ProgressBar #BackgroundContainerRightEnd {
   position: absolute;
-  right: 0px;
-  top: 0px;
+  right: 0;
+  top: 0;
   float: right;
 }
 #ProgressBar #TubeLeftEnd {
@@ -1314,20 +1311,20 @@ img {
 #ProgressBar .Tube {
   position: relative;
   top: 16px;
-  left: 0px;
+  left: 0;
   width: 100%;
   height: 7px;
-  background: #FFFFFF none repeat scroll 0%;
+  background: #FFFFFF none repeat scroll 0;
 }
 * html #ProgressBar .Tube {
   top: 13px;
 }
 #ProgressBar .SingleStepContainer {
   position: absolute;
-  top: 0px;
+  top: 0;
   width: 47px;
   height: 30px;
-  right: 0px;
+  right: 0;
   text-align: center;
 }
 #ProgressBar #FirstStep .SingleStepContainer {
@@ -1337,14 +1334,14 @@ img {
 }
 #ProgressBar .StepIcon {
   position: absolute;
-  right: 0px;
+  right: 0;
 }
 * html #ProgressBar .StepIcon {
   right: -1px;
 }
 #ProgressBar #FirstStep .StepIcon {
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
 }
 #ProgressBar .StepText {
   top: 40px;
@@ -1397,8 +1394,8 @@ img {
   text-align: left;
   color: white;
   padding-left: 10px;
-  padding-top: 0px;
-  padding-bottom: 0px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 .TableContainer .CaptionContainer .CaptionEdgeLeftTop {
 	position: absolute;
@@ -1436,14 +1433,14 @@ img {
   position: absolute;
   width: 100%;
   height: 4px;
-  left: 0px;
+  left: 0;
   top: -1px;
 }
 .TableContainer .CaptionContainer .CaptionBorderBottom {
   position: absolute;
   width: 100%;
   height: 4px;
-  left: 0px;
+  left: 0;
   bottom: -2px;
 }
 .TableContainer .CaptionContainer .CaptionVerticalLeft {
@@ -1451,14 +1448,14 @@ img {
   height: 100%;
   width: 3px;
   left: -1px;
-  top: 0px;
+  top: 0;
 }
 .TableContainer .CaptionContainer .CaptionVerticalRight {
   position: absolute;
   height: 100%;
   width: 3px;
   right: -1px;
-  top: 0px;
+  top: 0;
 }
 * html .TableContainer .CaptionContainer .CaptionEdgeRightTop {
   right: -3px;
@@ -1483,7 +1480,7 @@ img {
   margin-right: 4px;
   height: 100%;
   background-color: #d4c0a1;
-  padding: 0px;
+  padding: 0;
 }
 .TableContent {
   width: 100%;
@@ -1509,13 +1506,13 @@ img {
   width: 100%;
   border: 2px solid #55636c;
   background-color: #f1e0c5;
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
   border-collapse: collapse;
 }
 .TableContainer .Table2 td {
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
 }
 .TableContainer .Table2 .InnerTableContainer {
   margin-top: 1px;
@@ -1581,17 +1578,17 @@ img {
 /* SHADOWS */
 .TableShadowContainerRightTop {
   position: relative;
-  top: 0px;
+  top: 0;
   right: 3px;
-  margin-right: 0px;
+  margin-right: 0;
   font-size: 1px;
   float: right;
   z-index: 99;
 }
 .TableShadowRightTop {
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 0;
+  right: 0;
   width: 4px;
   height: 5px;
   z-index: 99;
@@ -1613,28 +1610,28 @@ img {
   font-size: 1px;
   height: 5px;
   width: 100%;
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
 }
 .TableBottomLeftShadow {
   position: relative;
   height: 5px;
   width: 4px;
   float: left;
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
 }
 .TableBottomRightShadow {
   position: relative;
   float: right;
   right: -2px;
-  top: 0px;
+  top: 0;
   height: 5px;
   width: 4px;
 }
 /* HEADLESS CONTENT TABLE */
 .HeadlessTable {
-  border: 0px;
+  border: 0;
   border-style: solid;
   border-color: #656565;
   border-top-width: 1px;
@@ -1743,9 +1740,9 @@ img {
 .InnerTableButtonRow {
   width: 100%;
   padding-left: 1px;
-  padding-right: 0px;
+  padding-right: 0;
   padding-bottom: 4px;
-  border: 0px;
+  border: 0;
 }
 .InnerTableButtonRow td {
   padding-right: 4px;
@@ -1758,8 +1755,8 @@ img {
 }
 .BigButtonOver {
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   width: 137px;
   height: 25px;
   visibility: hidden;
@@ -1767,8 +1764,8 @@ img {
 }
 .ButtonText {
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   height: 25px;
   width: 135px;
   z-index: 20;
@@ -1803,7 +1800,7 @@ img {
 }
 .TopButtonContainer .TopButton {
   position: absolute;
-  right: 0px;
+  right: 0;
   z-index: 55;
 }
 
@@ -1858,7 +1855,7 @@ img {
 .Content #NewsTicker .NewsTickerDate {
   font-size: 7pt;
   position: absolute;
-  top: 0px;
+  top: 0;
   float: left;
 }
 
@@ -1875,7 +1872,7 @@ img {
 
 .Content #NewsTicker .NewsTickerExtend {
   position: relative;
-  right: 0px;
+  right: 0;
   top: 1px;
   right: 1px;
   height: 12px;
@@ -1904,8 +1901,8 @@ img {
 
 .Content #FeaturedArticle #TeaserThumbnail {
   position: relative;
-  top: 0px;
-  right: 0px;
+  top: 0;
+  right: 0;
   height: 100px;
   width: 150px;
   margin-left: 10px;
@@ -1926,8 +1923,8 @@ img {
 
 .Content #FeaturedArticle #Link {
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 0;
+  right: 0;
   margin: 89 165 0 0;
   z-index: 99;
 }
@@ -1944,7 +1941,7 @@ img {
 .Content #FeaturedArticle .NewsHeadlineIcon {
   position: absolute;
   top: -1px;
-  left: 0px;
+  left: 0;
   margin-left: 5px;
   margin-right: 5px;
   float:left;
@@ -1988,7 +1985,7 @@ img {
 .Content #News .NewsHeadlineIcon {
   position: absolute;
   top: -1px;
-  left: 0px;
+  left: 0;
   margin-left: 5px;
   margin-right: 5px;
 }
@@ -2025,7 +2022,7 @@ img {
 .Content #NewsArchive .NewsHeadlineIcon {
   position: absolute;
   top: -1px;
-  left: 0px;
+  left: 0;
   margin-left: 5px;
   margin-right: 5px;
 }
