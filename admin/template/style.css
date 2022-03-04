@@ -43,27 +43,6 @@ tr.shown td.details-control {
 	color: red;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .table{
 	--bs-table-striped-color: #B8C7D0;
 }
@@ -71,46 +50,26 @@ a {
 	text-decoration: none;
 }
 .skin-blue .main-header .navbar{
-	padding-bottom: 0px;
-	padding-top: 0px;
+	padding-bottom: 0;
+	padding-top: 0;
 }
 tr {
     color: #B8C7D0;
 }
-.nav-tabs .nav-link{
-	color: #fff;
-	border-bottom: 1px solid #fff;
-	background: #202634;
-	border-radius: 5px 5px 0px 0px;
+.nav-tabs .nav-link {
+	color: #444;
+	border: 1px solid #ededed;
+	background: #f9f9f9;
+	border-radius: 5px 5px 0 0;
+	margin-left: 5px;
 }
 ul.nav.nav-tabs.nav-justified.control-sidebar-tabs{
 	background: #202634;
 	padding: 20px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ul.sidebar-menu .svg-inline--fa {
+	padding-top: 4px; padding-right: 4px !important;
+}
+.form-signin {
+	color: #fff
+}

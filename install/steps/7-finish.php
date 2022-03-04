@@ -136,6 +136,7 @@ if (isset($config['installed']) && $config['installed'] && !isset($_SESSION['sav
         }
         
         unset($_SESSION['saved']);
+        
         if (file_exists(CACHE . 'install.txt')) {
             unlink(CACHE . 'install.txt');
         }
