@@ -1,8 +1,57 @@
-/.idea
-/system/logs/
-/system/cache/
-/system/php_sessions/
-config.local.php
 config.php
-/vendor/
+
+Thumbs.db
+.DS_Store
+.idea
+
+# composer
 composer.lock
+vendor
+
+# npm
+node_modules
+
+# created by release.sh
+releases
+tmp
+
+config.local.php
+
+# all custom templates
+templates/*
+!templates/tibiacom
+
+# guild images
+images/guilds/*
+!images/guilds/default.gif
+
+# cache
+system/cache/*
+!system/cache/index.html
+!system/cache/twig/index.html
+!system/cache/signatures/index.html
+!system/cache/plugins/index.html
+
+# php sessions
+system/php_sessions/*
+!system/cache/index.html
+
+# logs
+system/logs/*
+!system/logs/index.html
+
+# data
+system/data/*
+!system/data/index.html
+
+# plugins
+plugins/*
+!plugins/.htaccess
+!plugins/example.json
+!plugins/account-create-hint.json
+!plugins/account-create-hint
+landing
+/login.php
+
+# others/rest
+system/pages/downloads.php
