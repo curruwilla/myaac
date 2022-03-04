@@ -631,7 +631,7 @@ img {
  */
 
 .Content .BoxContent {
-  padding: 10px;
+  padding: 10px 5px 5px;
 }
 
 /* "tanhack" for correction of IE bug */
@@ -2094,3 +2094,6 @@ img {
 	cursor: pointer;
 	cursor: hand;
 }
+
+.TableContent tr:nth-child(even) {background: #D4C0A1}
+.TableContent tr:nth-child(odd) {background: #F1E0C6}

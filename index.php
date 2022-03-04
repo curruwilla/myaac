@@ -38,10 +38,7 @@ if (!empty($tmp)) {
     $uri = str_replace_first('/', '', $uri);
 }
 
-$uri = str_replace([
-    'index.php/',
-    '?',
-], '', $uri);
+$uri = str_replace(['index.php/', '?',], '', $uri);
 define('URI', $uri);
 
 if (preg_match("/^[A-Za-z0-9-_%'+]+\.png$/i", $uri)) {
@@ -358,9 +355,6 @@ if (isset($config['anonymous_usage_statistics']) && $config['anonymous_usage_sta
     }
     
     if ($should_report) {
-        require_once LIBS . 'usage_statistics.php';
-        Usage_Statistics::report();
-        
         updateDatabaseConfig('last_usage_report', time());
         if ($cache->enabled()) {
             $cache->set('last_usage_report', time());
@@ -381,6 +375,7 @@ if ($config['visitors_counter']) {
 if (!isset($content[0])) {
     $content = '';
 }
+
 $load_it = true;
 
 // check if site has been closed
