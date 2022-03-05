@@ -14,7 +14,11 @@
                         <span>{{ locale['step_admin_' ~ value] }}</span>
                     </label>
                     <br/>
-                    <input type="text" name="vars[{{ value }}]" id="vars_{{ value }}"{% if session['var_' ~ value] is not null %} value="{{ session['var_' ~ value] }}"{% endif %}/>
+                    {% if value == 'password' %}
+                        <input type="password" name="vars[{{ value }}]" id="vars_{{ value }}"{% if session['var_' ~ value] is not null %} value="{{ session['var_' ~ value] }}"{% endif %}/>
+                    {% else %}
+                        <input type="text" name="vars[{{ value }}]" id="vars_{{ value }}"{% if session['var_' ~ value] is not null %} value="{{ session['var_' ~ value] }}"{% endif %}/>
+                    {% endif %}
                 </td>
                 <td>
                     <em>{{ locale['step_admin_' ~ value ~ '_desc']|raw }}</em>

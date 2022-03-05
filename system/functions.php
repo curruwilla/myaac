@@ -12,6 +12,12 @@ use Twig\Loader\ArrayLoader as Twig_ArrayLoader;
 
 defined('MYAAC') or die('Direct access not allowed!');
 
+/**
+ * @param $message
+ * @param $type
+ * @param $return
+ * @return bool|mixed|string
+ */
 function message($message, $type, $return)
 {
     if (IS_CLI) {
@@ -33,26 +39,54 @@ function message($message, $type, $return)
     return true;
 }
 
+/**
+ * @param $message
+ * @param $return
+ * @return bool|mixed|string
+ */
 function success($message, $return = false)
 {
     return message($message, 'success', $return);
 }
 
+/**
+ * @param $message
+ * @param $return
+ * @return bool|mixed|string
+ */
 function warning($message, $return = false)
 {
     return message($message, 'warning', $return);
 }
 
+/**
+ * @param $message
+ * @param $return
+ * @return bool|mixed|string
+ */
 function note($message, $return = false)
 {
     return message($message, 'note', $return);
 }
 
+/**
+ * @param $message
+ * @param $return
+ * @return bool|mixed|string
+ */
 function error($message, $return = false)
 {
     return message($message, 'error', $return);
 }
 
+/**
+ * @param $head
+ * @param $message
+ * @param $type
+ * @param $icon
+ * @param $return
+ * @return bool|string
+ */
 function message1($head, $message, $type, $icon, $return)
 {//return '<div class="' . $type . '">' . $message . '</div>';
     if ($return) {
@@ -64,26 +98,50 @@ function message1($head, $message, $type, $icon, $return)
     return true;
 }
 
+/**
+ * @param $message
+ * @param $return
+ * @return bool|mixed|string
+ */
 function success1($message, $return = false)
 {
     return message('Info', $message, 'success', 'success', $return);
 }
 
+/**
+ * @param $message
+ * @param $return
+ * @return bool|mixed|string
+ */
 function warning1($message, $return = false)
 {
     return message('Warning', $message, 'warning', 'ban', $return);
 }
 
+/**
+ * @param $message
+ * @param $return
+ * @return bool|mixed|string
+ */
 function note1($message, $return = false)
 {
     return message('Info', $message, 'info', 'info', $return);
 }
 
+/**
+ * @param $message
+ * @param $return
+ * @return bool|mixed|string
+ */
 function error1($message, $return = false)
 {
     return message('Alert', $message, 'danger', 'check', $return);
 }
 
+/**
+ * @param $ip
+ * @return string
+ */
 function longToIp($ip)
 {
     $exp = explode('.', long2ip($ip));
@@ -91,16 +149,33 @@ function longToIp($ip)
     return $exp[3] . '.' . $exp[2] . '.' . $exp[1] . '.' . $exp[0];
 }
 
+/**
+ * @param $url
+ * @param $name
+ * @param $blank
+ * @return string
+ */
 function generateLink($url, $name, $blank = false)
 {
     return '<a href="' . $url . '"' . ($blank ? ' target="_blank"' : '') . '>' . $name . '</a>';
 }
 
+/**
+ * @param $page
+ * @param $name
+ * @param $blank
+ * @return string
+ */
 function getFullLink($page, $name, $blank = false)
 {
     return generateLink(getLink($page), $name, $blank);
 }
 
+/**
+ * @param $page
+ * @param $action
+ * @return string
+ */
 function getLink($page, $action = null)
 {
     global $config;
@@ -108,11 +183,21 @@ function getLink($page, $action = null)
     return BASE_URL . ($config['friendly_urls'] ? '' : '?') . $page . ($action ? '/' . $action : '');
 }
 
+/**
+ * @param $page
+ * @param $action
+ * @return string
+ */
 function internalLayoutLink($page, $action = null)
 {
     return getLink($page, $action);
 }
 
+/**
+ * @param $thread_id
+ * @param $page
+ * @return string
+ */
 function getForumThreadLink($thread_id, $page = null)
 {
     global $config;
@@ -120,6 +205,11 @@ function getForumThreadLink($thread_id, $page = null)
     return BASE_URL . ($config['friendly_urls'] ? '' : '?') . 'forum/thread/' . (int) $thread_id . (isset($page) ? '/' . $page : '');
 }
 
+/**
+ * @param $board_id
+ * @param $page
+ * @return string
+ */
 function getForumBoardLink($board_id, $page = null)
 {
     global $config;
@@ -127,6 +217,12 @@ function getForumBoardLink($board_id, $page = null)
     return BASE_URL . ($config['friendly_urls'] ? '' : '?') . 'forum/board/' . (int) $board_id . (isset($page) ? '/' . $page : '');
 }
 
+/**
+ * @param $name
+ * @param $generate
+ * @return string
+ * @throws E_OTS_NotLoaded
+ */
 function getPlayerLink($name, $generate = true)
 {
     global $config;
@@ -148,6 +244,11 @@ function getPlayerLink($name, $generate = true)
     return generateLink($url, $name);
 }
 
+/**
+ * @param $name
+ * @param $generate
+ * @return string
+ */
 function getHouseLink($name, $generate = true)
 {
     global $db, $config;
@@ -170,6 +271,11 @@ function getHouseLink($name, $generate = true)
     return generateLink($url, $name);
 }
 
+/**
+ * @param $name
+ * @param $generate
+ * @return string
+ */
 function getGuildLink($name, $generate = true)
 {
     global $db, $config;
@@ -192,6 +298,10 @@ function getGuildLink($name, $generate = true)
     return generateLink($url, $name);
 }
 
+/**
+ * @param $id
+ * @return mixed|string
+ */
 function getItemNameById($id)
 {
     require_once LIBS . 'items.php';
@@ -200,6 +310,11 @@ function getItemNameById($id)
     return !empty($item['name']) ? $item['name'] : '';
 }
 
+/**
+ * @param $id
+ * @param $count
+ * @return string
+ */
 function getItemImage($id, $count = 1)
 {
     $tooltip = '';
@@ -219,6 +334,10 @@ function getItemImage($id, $count = 1)
     return '<img src="' . $config['item_images_url'] . $file_name . '.gif"' . $tooltip . ' width="32" height="32" border="0" alt="' . $id . '" />';
 }
 
+/**
+ * @param $country
+ * @return string
+ */
 function getFlagImage($country)
 {
     if (!isset($country[0])) {
@@ -405,6 +524,11 @@ function encrypt($str)
 }
 
 //delete player with name
+/**
+ * @param $name
+ * @return bool
+ * @throws E_OTS_NotLoaded
+ */
 function delete_player($name)
 {
     global $db;
@@ -487,6 +611,11 @@ function delete_player($name)
 }
 
 //delete guild with id
+/**
+ * @param $id
+ * @return bool
+ * @throws E_OTS_NotLoaded
+ */
 function delete_guild($id)
 {
     $guild = new OTS_Guild();
@@ -535,6 +664,11 @@ function delete_guild($id)
 
 //################### DISPLAY FUNCTIONS #####################
 //return shorter text (news ticker)
+/**
+ * @param $text
+ * @param $limit
+ * @return mixed|string
+ */
 function short_text($text, $limit)
 {
     if (strlen($text) > $limit) {
@@ -544,6 +678,9 @@ function short_text($text, $limit)
     return $text;
 }
 
+/**
+ * @return string
+ */
 function tickers()
 {
     global $tickers_content, $featured_article;
@@ -652,6 +789,12 @@ function template_footer()
     return $ret . '<br/> Copyright by Myaac. All rights reserved.';
 }
 
+/**
+ * @return string
+ * @throws \Twig\Error\LoaderError
+ * @throws \Twig\Error\RuntimeError
+ * @throws \Twig\Error\SyntaxError
+ */
 function template_ga_code()
 {
     global $config, $twig;
@@ -662,6 +805,9 @@ function template_ga_code()
     return $twig->render('google_analytics.html.twig');
 }
 
+/**
+ * @return string
+ */
 function template_form()
 {
     global $template_name;
@@ -690,6 +836,10 @@ function template_form()
 			</form>';
 }
 
+/**
+ * @param $i
+ * @return mixed
+ */
 function getStyle($i)
 {
     global $config;
@@ -698,6 +848,13 @@ function getStyle($i)
 }
 
 $vowels = ['e', 'y', 'u', 'i', 'o', 'a'];
+/**
+ * @param $killer
+ * @param $showStatus
+ * @param $extendedInfo
+ * @return string
+ * @throws E_OTS_NotLoaded
+ */
 function getCreatureName($killer, $showStatus = false, $extendedInfo = false)
 {
     global $vowels, $ots, $config;
@@ -866,6 +1023,9 @@ function formatExperience($exp, $color = true)
     return $ret;
 }
 
+/**
+ * @return array
+ */
 function get_locales()
 {
     $ret = [];
@@ -880,6 +1040,9 @@ function get_locales()
     return $ret;
 }
 
+/**
+ * @return array
+ */
 function get_browser_languages()
 {
     $ret = [];
@@ -941,6 +1104,10 @@ function get_plugins()
     return $ret;
 }
 
+/**
+ * @param $id
+ * @return mixed
+ */
 function getWorldName($id)
 {
     global $config;
@@ -1034,6 +1201,10 @@ function _mail($to, $subject, $body, $altBody = '', $add_html_tags = true)
     return true;
 }
 
+/**
+ * @param $size
+ * @return string
+ */
 function convert_bytes($size)
 {
     $unit = ['b', 'kb', 'mb', 'gb', 'tb', 'pb'];
@@ -1041,6 +1212,12 @@ function convert_bytes($size)
     return @round($size / pow(1024, ($i = floor(log($size, 1024)))), 2) . ' ' . $unit[$i];
 }
 
+/**
+ * @param $file
+ * @param $str
+ * @param array $params
+ * @return void
+ */
 function log_append($file, $str, array $params = [])
 {
     if (count($params) > 0) {
@@ -1052,6 +1229,10 @@ function log_append($file, $str, array $params = [])
     fclose($f);
 }
 
+/**
+ * @param $filename
+ * @return array
+ */
 function load_config_lua($filename)
 {
     global $config;
@@ -1059,7 +1240,7 @@ function load_config_lua($filename)
     $config_file = $filename;
     if (!@file_exists($config_file)) {
         log_append('error.log', '[load_config_file] Fatal error: Cannot load config.lua (' . $filename . '). Error: ' . print_r(error_get_last(), true));
-
+        
         throw new RuntimeException('ERROR: Cannot find ' . $filename . ' file. More info in system/logs/error.log');
     }
 
@@ -1123,6 +1304,12 @@ function load_config_lua($filename)
     return $result;
 }
 
+/**
+ * @param $search
+ * @param $replace
+ * @param $subject
+ * @return array|mixed|string|string[]
+ */
 function str_replace_first($search, $replace, $subject)
 {
     $pos = strpos($subject, $search);
@@ -1133,6 +1320,9 @@ function str_replace_first($search, $replace, $subject)
     return $subject;
 }
 
+/**
+ * @return mixed|string
+ */
 function get_browser_real_ip()
 {
     if (isset($_SERVER['HTTP_CF_CONNECTING_IP'])) {
@@ -1152,11 +1342,20 @@ function get_browser_real_ip()
     return '0';
 }
 
+/**
+ * @param $key
+ * @param $data
+ * @return void
+ */
 function setSession($key, $data)
 {
     $_SESSION[config('session_prefix') . $key] = $data;
 }
 
+/**
+ * @param $key
+ * @return false|mixed
+ */
 function getSession($key)
 {
     $key = config('session_prefix') . $key;
@@ -1164,11 +1363,19 @@ function getSession($key)
     return $_SESSION[$key] ?? false;
 }
 
+/**
+ * @param $key
+ * @return void
+ */
 function unsetSession($key)
 {
     unset($_SESSION[config('session_prefix') . $key]);
 }
 
+/**
+ * @param $limit
+ * @return array|false|mixed
+ */
 function getTopPlayers($limit = 5)
 {
     global $db;
@@ -1214,6 +1421,12 @@ function getTopPlayers($limit = 5)
     return $players;
 }
 
+/**
+ * @param $dir
+ * @param $ignore
+ * @param $contentOnly
+ * @return bool
+ */
 function deleteDirectory($dir, $ignore = [], $contentOnly = false)
 {
     if (!file_exists($dir)) {
@@ -1241,6 +1454,10 @@ function deleteDirectory($dir, $ignore = [], $contentOnly = false)
     return rmdir($dir);
 }
 
+/**
+ * @param $key
+ * @return mixed|null
+ */
 function config($key)
 {
     global $config;
@@ -1251,6 +1468,10 @@ function config($key)
     return $config[$key] ?? null;
 }
 
+/**
+ * @param $key
+ * @return mixed|null
+ */
 function configLua($key)
 {
     global $config;
@@ -1261,6 +1482,9 @@ function configLua($key)
     return $config['lua'][$key] ?? null;
 }
 
+/**
+ * @return bool
+ */
 function clearCache()
 {
     require_once LIBS . 'news.php';
@@ -1321,6 +1545,10 @@ function clearCache()
     return true;
 }
 
+/**
+ * @param $page
+ * @return mixed|null
+ */
 function getCustomPageInfo($page)
 {
     global $db, $logged_access;
@@ -1337,6 +1565,14 @@ function getCustomPageInfo($page)
     return null;
 }
 
+/**
+ * @param $page
+ * @param $success
+ * @return string
+ * @throws \Twig\Error\LoaderError
+ * @throws \Twig\Error\RuntimeError
+ * @throws \Twig\Error\SyntaxError
+ */
 function getCustomPage($page, &$success)
 {
     global $db, $twig, $title, $ignore, $logged_access;
@@ -1407,6 +1643,9 @@ function getCustomPage($page, &$success)
     return $content;
 }
 
+/**
+ * @return string
+ */
 function getAccountLoginByLabel()
 {
     $ret = '';
@@ -1424,6 +1663,11 @@ function getAccountLoginByLabel()
     return $ret;
 }
 
+/**
+ * @param $neddle
+ * @param $haystack
+ * @return bool
+ */
 function strContains($neddle, $haystack)
 {
     return strpos($haystack, $neddle) !== false;

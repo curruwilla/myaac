@@ -3,6 +3,7 @@
 defined('MYAAC') or die('Direct access not allowed!');
 
 require BASE . 'install/includes/config.php';
+
 if (!$error) {
     require BASE . 'install/includes/database.php';
     
@@ -19,7 +20,7 @@ if (!$error) {
         'locale'  => $locale,
         'session' => $_SESSION,
         'account' => $account,
-        'errors'  => isset($errors) ? $errors : null,
-        'buttons' => next_buttons(true, $error ? false : true)
+        'errors'  => $errors ?? null,
+        'buttons' => next_buttons(true, !$error)
     ));
 }
