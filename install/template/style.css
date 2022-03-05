@@ -89,7 +89,7 @@ img {
 
 /** BEGIN content **/
 #content {
-	width: 70%;
+	width: 65%;
 	float: left;
 	padding: 30px 18px 30px 20px;
 	color: #434242;
@@ -178,7 +178,7 @@ form .input {
     clear: both;
 }
 
-form input[type='text'] {
+form input[type='text'], form input[type='password'] {
 	margin-right: 5px;
 	border: 1px solid #ddd;
 	padding: 10px 10px;
