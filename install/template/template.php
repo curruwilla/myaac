@@ -44,7 +44,7 @@
 </div>
 
 <div id="footer">
-    <p style="text-align: center;">Powered by <a href="https://github.com/curruwilla/myaac" target="_blank">MyAAC.</a></p>
+    <p style="text-align: center;">Powered by <a target="_blank" href="https://github.com/curruwilla/myaac">MyAAC.</a> Layout <a target="_blank" href="https://github.com/curruwilla/myaac">William Alvares</a>.</p>
 </div>
 </body>
 </html>

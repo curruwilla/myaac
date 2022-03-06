@@ -7,12 +7,14 @@
  * @copyright 2019 MyAAC
  * @link      https://my-aac.org
  */
+
 defined('MYAAC') or die('Direct access not allowed!');
 
 // load configuration
 require_once BASE . 'config.php';
-if (file_exists(BASE . 'config.local.php')) // user customizations
-{
+
+// user customizations
+if (file_exists(BASE . 'config.local.php')) {
     require BASE . 'config.local.php';
 }
 
@@ -27,8 +29,7 @@ if ($config['server_path'][strlen($config['server_path']) - 1] !== '/') {
 }
 
 // enable gzip compression if supported by the browser
-if ($config['gzip_output'] && isset($_SERVER['HTTP_ACCEPT_ENCODING']) && strpos($_SERVER['HTTP_ACCEPT_ENCODING'],
-        'gzip') !== false && function_exists('ob_gzhandler')) {
+if ($config['gzip_output'] && isset($_SERVER['HTTP_ACCEPT_ENCODING']) && strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== false && function_exists('ob_gzhandler')) {
     ob_start('ob_gzhandler');
 }
 
@@ -47,6 +48,7 @@ if (isset($_POST)) {
         }
     }
 }
+
 if (isset($_GET)) {
     foreach ($_GET as $var => $value) {
         if (is_string($value)) {
@@ -54,6 +56,7 @@ if (isset($_GET)) {
         }
     }
 }
+
 if (isset($_REQUEST)) {
     foreach ($_REQUEST as $var => $value) {
         if (is_string($value)) {
@@ -171,25 +174,6 @@ if ($cache->enabled() && $cache->fetch('vocations', $tmp)) {
     }
 }
 unset($tmp, $id, $vocation);
-
-// load towns
-/* TODO: doesnt work
-ini_set('memory_limit', '-1');
-$tmp = '';
-
-if($cache->enabled() && $cache->fetch('towns', $tmp)) {
-	$config['towns'] = unserialize($tmp);
-}
-else {
-	$towns = new OTS_OTBMFile();
-	$towns->loadFile('D:/Projekty/opentibia/wodzislawski/data/world/wodzislawski.otbm');
-
-	$config['towns'] = $towns->getTownsList();
-	if($cache->enabled()) {
-		$cache->set('towns', serialize($config['towns']), 120);
-	}
-}
-*/
 
 ////////////////////////////////////////
 // load towns from database (TFS 1.3) //

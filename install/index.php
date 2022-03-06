@@ -21,15 +21,15 @@ if (file_exists(BASE . 'config.local.php')) {
 $config['env'] = 'prod';
 
 $twig_loader = new Twig_FilesystemLoader(SYSTEM . 'templates');
-$twig = new Twig_Environment($twig_loader, array(
-    'cache'       => CACHE . 'twig/',
+$twig = new Twig_Environment($twig_loader, [
+    'cache' => CACHE . 'twig/',
     'auto_reload' => true
-));
+]);
 
 // load installation status
 $step = $_POST['step'] ?? 'welcome';
 
-$install_status = array();
+$install_status = [];
 if (file_exists(CACHE . 'install.txt')) {
     $install_status = unserialize(file_get_contents(CACHE . 'install.txt'));
     
@@ -54,13 +54,21 @@ if ($step == 'finish' && (!isset($config['installed']) || !$config['installed'])
 }
 
 // step verify
-$steps = array(1 => 'welcome', 2 => 'license', 3 => 'requirements', 4 => 'config', 5 => 'database', 6 => 'admin', 7 => 'finish');
+$steps = [
+    1 => 'welcome',
+    2 => 'license',
+    3 => 'requirements',
+    4 => 'config',
+    5 => 'database',
+    6 => 'admin',
+    7 => 'finish'
+];
 if (!in_array($step, $steps)) {
     throw new RuntimeException('ERROR: Unknown step.');
 }
 
 $install_status['step'] = $step;
-$errors = array();
+$errors = [];
 
 if ($step == 'database') {
     foreach ($_SESSION as $key => $value) {
@@ -70,7 +78,7 @@ if ($step == 'database') {
         
         $key = str_replace('var_', '', $key);
         
-        if (in_array($key, array('account', 'password', 'email', 'player_name'))) {
+        if (in_array($key, ['account', 'password', 'email', 'player_name'])) {
             continue;
         }
         
@@ -206,7 +214,8 @@ clearstatcache();
 
 if (is_writable(CACHE) && (MYAAC_OS != 'WINDOWS' || win_is_writable(CACHE))) {
     if (!file_exists(BASE . 'install/ip.txt')) {
-        $content = warning('AAC installation is disabled. To enable it make file <b>ip.txt</b> in install/ directory and put there your IP.<br/> Your IP is:<br /><b>' . $_SERVER['REMOTE_ADDR'] . '</b>', true);
+        $content = warning('AAC installation is disabled. To enable it make file <b>ip.txt</b> in install/ directory and put there your IP.<br/> Your IP is:<br /><b>' . $_SERVER['REMOTE_ADDR'] . '</b>',
+            true);
     } else {
         $file_content = trim(file_get_contents(BASE . 'install/ip.txt'));
         $allow = false;

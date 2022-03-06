@@ -2,6 +2,10 @@
 
 defined('MYAAC') or die('Direct access not allowed!');
 
+if (!file_exists(BASE . 'config.php') && file_exists(BASE . 'config.example.php')) {
+    rename(BASE . 'config.example.php', BASE . 'config.php');
+}
+
 ini_set('max_execution_time', 300);
 if (isset($config['installed']) && $config['installed'] && !isset($_SESSION['saved'])) {
     warning($locale['already_installed']);
