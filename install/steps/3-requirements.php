@@ -9,13 +9,14 @@ $extensions_required = [
     'xml',
     'zip'
 ];
-/*
- *
+
+/**
  * @param string $name
- * @param boolean $ok
+ * @param bool $ok
  * @param mixed $info
+ * @param bool $warning
  */
-function version_check($name, $ok, $info = '', $warning = false)
+function version_check(string $name, bool $ok, $info = '', bool $warning = false)
 {
     global $failed;
     echo '<p class="' . ($ok ? 'success' : ($warning ? 'warning' : 'error')) . '">' . $name;
@@ -32,8 +33,9 @@ function version_check($name, $ok, $info = '', $warning = false)
 $failed = false;
 
 // start validating
-version_check($locale['step_requirements_php_version'], (PHP_VERSION_ID >= 50500), PHP_VERSION);
-foreach (array('images/guilds', 'images/houses', 'images/gallery') as $value) {
+version_check($locale['step_requirements_php_version'], (PHP_VERSION_ID >= 70400), PHP_VERSION);
+
+foreach (['images/guilds', 'images/houses', 'images/gallery'] as $value) {
     $is_writable = is_writable(BASE . $value);
     version_check($locale['step_requirements_write_perms'] . ': ' . $value, $is_writable);
 }
@@ -52,6 +54,7 @@ foreach ($extensions_required as $ext) {
 if ($failed) {
     echo '<br/><b>' . $locale['step_requirements_failed'];
     echo next_form(true, false);
-} else {
-    echo next_form();
+    return;
 }
+
+echo next_form();

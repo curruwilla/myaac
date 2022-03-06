@@ -4,6 +4,7 @@
   },
   "require": {
     "ext-dom": "*",
-    "ext-json": "*"
+    "ext-json": "*",
+    "ext-pdo": "*"
   }
 }
