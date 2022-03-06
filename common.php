@@ -66,6 +66,10 @@ const TFS_03 = 4;
 const TFS_FIRST = TFS_02;
 const TFS_LAST = TFS_03;
 
+if (is_dir(SYSTEM . 'php_sessions') === false) {
+    mkdir(SYSTEM . 'php_sessions', 0755);
+}
+
 session_save_path(SYSTEM . 'php_sessions');
 session_start();
 
