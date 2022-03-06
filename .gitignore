@@ -1,5 +1,4 @@
-config.php
-!install/includes/config.php
+/config.php
 
 Thumbs.db
 .DS_Store

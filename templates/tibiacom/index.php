@@ -6,7 +6,7 @@ if (isset($config['boxes'])) {
     $config['boxes'] = explode(',', $config['boxes']);
 }
 ?>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="<?= $config['language']; ?>">
 <head>
     <?= template_place_holder('head_start'); ?>
     <link rel="shortcut icon" href="<?= $template_path; ?>/images/favicon.ico" type="image/x-icon"/>
@@ -68,11 +68,15 @@ if (isset($config['boxes'])) {
         let LINK_ACCOUNT = "<?= BASE_URL; ?>";
         
         function rowOverEffect(object) {
-            if (object.className == 'moduleRow') object.className = 'moduleRowOver';
+            if (object.className == 'moduleRow') {
+                object.className = 'moduleRowOver';
+            }
         }
         
         function rowOutEffect(object) {
-            if (object.className == 'moduleRowOver') object.className = 'moduleRow';
+            if (object.className == 'moduleRowOver') {
+                object.className = 'moduleRow';
+            }
         }
         
         function InitializePage() {
@@ -128,14 +132,14 @@ if (isset($config['boxes'])) {
         
         // load the menu and set the active submenu item by using the variable 'activeSubmenuItem'
         function LoadMenu() {
-            document.getElementById("submenu_" + activeSubmenuItem).style.color = "white";
+            document.getElementById("submenu_"+activeSubmenuItem).style.color = "white";
             document.getElementById("ActiveSubmenuItemIcon_" + activeSubmenuItem).style.visibility = "visible";
+            
             menus = localStorage.getItem('menus');
             if (menus.lastIndexOf("&") === -1) {
-                menus = "news=1&account=0&community=0&library=0&forum=0<?php if ($config['gifts_system']) {
-                    echo '&shops=0';
-                } ?>&";
+                menus = "news=1&account=0&community=0&library=0&forum=0<?= $config['gifts_system'] ? '&shops=0' : '' ?>&";
             }
+            
             FillMenuArray();
             InitializeMenu();
         }
@@ -150,9 +154,9 @@ if (isset($config['boxes'])) {
         // store the values of the variable 'self.name' in the array menu
         function FillMenuArray() {
             while (menus.length > 0) {
-                var mark1 = menus.indexOf("=");
-                var mark2 = menus.indexOf("&");
-                var menuItemName = menus.substr(0, mark1);
+                let mark1 = menus.indexOf("=");
+                let mark2 = menus.indexOf("&");
+                let menuItemName = menus.substr(0, mark1);
                 menu[0][menuItemName] = menus.substring(mark1 + 1, mark2);
                 menus = menus.substr(mark2 + 1, menus.length);
             }
