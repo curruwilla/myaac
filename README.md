@@ -6,6 +6,7 @@ MyAAC is a free and open-source Automatic Account Creator (AAC) written in PHP. 
 
 	- PHP 7.4 or later
 	- MySQL database
+    - Composer
 	- PDO PHP Extension
 	- XML PHP Extension
 	- ZIP PHP Extension
@@ -33,7 +34,7 @@ MyAAC is a free and open-source Automatic Account Creator (AAC) written in PHP. 
 
 ### Configuration
 
-Rename **config.example.php** to **config.php**.
+Check **config.php** to get more informations.
 Use **config.local.php** for your local configuration changes.
 
 ### Branches
