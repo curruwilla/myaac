@@ -2,8 +2,8 @@
 
 defined('MYAAC') or die('Direct access not allowed!');
 
-//ini_set('display_errors', false);
 ini_set('max_execution_time', 300);
+
 $error = false;
 
 if (!isset($_SESSION['var_server_path'])) {
